@@ -3,12 +3,12 @@
 
 void setup() {
   Serial.begin(9600);
-  rpmSensorLoop();
-  controlPinsLoop();
+  attachInterrupt(digitalPinToInterrupt(2), Pulse_Event, RISING);
+  rpmSensorSetup();
+  controlPinsSetup();
 } 
 
 void loop() {
-  attachInterrupt(digitalPinToInterrupt(2), Pulse_Event, RISING);
   rpmSensorLoop();
   controlPinsLoop();
   delay(200);
