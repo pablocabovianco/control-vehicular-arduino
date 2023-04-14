@@ -1,7 +1,7 @@
 #include "rpm_sensor.h"
 #include <Arduino.h>
 
-const byte PulsesPerRevolution = 1;       
+const byte PulsesPerRevolution = 2;       
 const unsigned long ZeroTimeout = 500000; // Timeout para mostrar 0 si no registra pulsos
 const byte numReadings = 2;               // Smoothing RPM: Cantidad de muestras para suavizar el resultado
 const float pi = 3.14159;
@@ -68,10 +68,10 @@ void rpmSensorLoop() {
 
   //Convierto las rpm promedio en km/h
   //Velocidad (km/h) = (RPM * 2 * pi * Radio de la rueda (m) * 60) / (1000 * Relación de transmisión)
-  float kmh = (average * 2 * pi * radio_rueda * 60) / (1000 * 1);
+  unsigned int kmh = (average * 2 * pi * radio_rueda * 60) / (1000 * 1);
 
   //Envia el promedio de RPM
-  Serial.println(average);
+  Serial.println(kmh);
 
 }
 
