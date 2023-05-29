@@ -26,6 +26,10 @@ unsigned long readIndex;
 unsigned long total;
 unsigned long average;
 
+// Tiempo en milisegundos para enviar el dato
+const unsigned long tiempoEnvio = 500;  // Por ejemplo, cada 0.5 segundos
+unsigned long ultimoEnvio = 0;  // Cuando fue el ultimo envio
+
 void rpmSensorSetup() {
   delay(1000);  
 }
@@ -70,9 +74,12 @@ void rpmSensorLoop() {
   //Velocidad (km/h) = (RPM * 2 * pi * Radio de la rueda (m) * 60) / (1000 * Relación de transmisión)
   unsigned int kmh = (average * 2 * pi * radio_rueda * 60) / (1000 * 1);
 
-  //Envia el promedio de RPM
-  Serial.println(kmh);
-
+  // Envía el promedio de RPM cada cierto tiempo
+  if(millis() - ultimoEnvio > tiempoEnvio){
+    ultimoEnvio = millis();
+    Serial.println(kmh);
+  }  
+  
 }
 
 void Pulse_Event() {
