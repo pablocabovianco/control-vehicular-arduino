@@ -18,13 +18,13 @@ const char BOCINA  = 0b0000110;
 
 // Array de estructuras ControlPin
 const ControlPin controlPines[] = {
-  {LUZ_POS, 45},
-  {LUZ_BAJ, 47},
-  {LUZ_ALT, 49},
-  {LUZ_REF, 51},
-  {LUZ_INT, 53},
-  {BLK_PUE, 41},
-  {BOCINA,  43}
+  {LUZ_POS, 33},
+  {LUZ_BAJ, 35},
+  {LUZ_ALT, 37},
+  {LUZ_REF, 39},
+  {LUZ_INT, 41},
+  {BLK_PUE, 43},
+  {BOCINA,  45}
 };
 
 // Determina el número de elementos en el array
