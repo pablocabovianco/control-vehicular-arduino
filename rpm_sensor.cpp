@@ -77,20 +77,7 @@ void rpmSensorLoop() {
   // Envía el promedio de RPM cada cierto tiempo
   if(millis() - ultimoEnvio > tiempoEnvio){
     ultimoEnvio = millis();
-
-    // Limita kmh a 127 si es mayor
-    if (kmh > 127) {
-      kmh = 127;
-    }
-
-    // Convierte kmh a byte
-    byte b = (byte)kmh;
-
-    // Asegura que el bit más significativo sea 0
-    b = b & 0b01111111;
-
-    // Envía b por el puerto serial
-    Serial.write(b);
+    Serial.println("KMH:" + String(kmh));  // Enviará "KMH:123\n"
   }  
   
 }
