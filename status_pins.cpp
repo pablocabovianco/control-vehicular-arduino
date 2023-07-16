@@ -49,7 +49,7 @@ void statusPinsLoop() {
       previousState[i] = currentState;
       
       // Construye el mensaje de estado
-      String mensaje = statusPines[i].codigo + "_" + (currentState ? "1" : "0");
+      String mensaje = statusPines[i].codigo + ":" + (currentState ? "1" : "0");
       
       // Envía el mensaje por el puerto serial
       Serial.println(mensaje);
